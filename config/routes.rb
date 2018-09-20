@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'food_trucks_controller#search'
+  resources :food_trucks
+  root 'food_trucks#search'
 end
