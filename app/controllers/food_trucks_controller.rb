@@ -6,7 +6,7 @@ class FoodTrucksController < ApplicationController
       params[:address],
       params[:radius_km]
     )
-    results = search_service.process
-    render json: { status: results.code, body: JSON.parse(results.body) }
+    food_trucks = search_service.process
+    render json: food_trucks, each_serializer: FoodTruckSerializer
   end
 end

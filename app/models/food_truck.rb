@@ -3,6 +3,7 @@
 class FoodTruck
   include ActiveModel::Validations
   include ActiveModel::Conversion
+  include ActiveModel::Serialization
   extend ActiveModel::Naming
 
   attr_accessor :latitude,
@@ -11,7 +12,7 @@ class FoodTruck
                 :name,
                 :food_items,
                 :location_description,
-                :schedule_short,
+                :schedule,
                 :schedule_url
 
   validates :latitude, :longitude, :address, :name, presence: true
