@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module FoodTrucks
   class SearchAroundAddressService
     def initialize(address, radius_km)
@@ -7,7 +8,9 @@ module FoodTrucks
     end
 
     def process
-      food_trucks_client.food_trucks_within(bounding_box)
+      raw_items = food_trucks_client.food_trucks_within(bounding_box)
+      # TODO: Handle non 200 responses
+      Deserializers::DataSfDeserializer.deserialize_collection(raw_items)
     end
 
     private
