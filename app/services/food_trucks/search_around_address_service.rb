@@ -2,9 +2,11 @@
 
 module FoodTrucks
   class SearchAroundAddressService
-    def initialize(address, radius_km)
+    DEFAULT_RADIUS_KM = Rails.configuration.search_default_radius_km
+
+    def initialize(address, radius_km = nil)
       @address = address
-      @radius_km = radius_km
+      @radius_km = radius_km || DEFAULT_RADIUS_KM
     end
 
     def process
