@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'active_model_serializers'
 gem 'awesome_print'
+gem 'geocoder'
 gem 'httparty'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
