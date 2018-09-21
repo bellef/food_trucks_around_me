@@ -1,8 +1,5 @@
 Geocoder.configure(
-  # street address geocoding service (default :nominatim)
-  # lookup: :yandex,
-  # to use an API key:
-  # api_key: "...",
-  # set default units to kilometers:
+  lookup: :mapbox,
+  api_key: ENV['MAPBOX_API_KEY'],
   units: :km
 )

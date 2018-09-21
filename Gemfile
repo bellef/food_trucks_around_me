@@ -26,7 +26,6 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'active_model_serializers'
-gem 'awesome_print'
 gem 'geocoder'
 gem 'httparty'
 
