@@ -2,26 +2,11 @@
 
 class FoodTrucksController < ApplicationController
   def search
-    res = food_trucks_client.food_trucks_within(bounding_box)
-    render json: { status: res.code, body: JSON.parse(res.body) }
-  end
-
-  private
-
-  # TODO extract in a service object
-  def bounding_box
-    Geocoder::Calculations.bounding_box(
-      search_address_coordinates,
+    search_service = FoodTrucks::SearchAroundAddressService.new(
+      params[:address],
       params[:radius_km]
     )
-  end
-
-  # TODO extract in a service object
-  def search_address_coordinates
-    Geocoder.search(params[:address]).first.coordinates
-  end
-
-  def food_trucks_client
-    FoodTrucks::DataSfAdapter.new
+    results = search_service.process
+    render json: { status: results.code, body: JSON.parse(results.body) }
   end
 end
