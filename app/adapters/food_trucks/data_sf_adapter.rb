@@ -3,6 +3,7 @@
 module FoodTrucks
   class DataSfAdapter
     include HTTParty
+    default_params headers: headers
 
     base_uri ENV['DATA_SF_BASE_URI']
 
@@ -15,8 +16,7 @@ module FoodTrucks
 
       response = self.class.get(
         ENV['DATA_SF_BASE_PATH'],
-        query: query,
-        headers: headers
+        query: query
       )
       return response if response.success?
       raise CustomErrors::Api::ThirdPartyApiError.new(message: 'An error occured with the DataSf API, please contact the service administrator or see the logs if you are the administrator.', code: 500, data: response)
