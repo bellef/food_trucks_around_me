@@ -2,6 +2,7 @@
 
 class FoodTrucksController < ApplicationController
   before_action :check_radius_km
+  before_action :check_address
 
   def search
     search_service = FoodTrucks::SearchAroundAddressService.new(
@@ -20,5 +21,9 @@ class FoodTrucksController < ApplicationController
     raise ApiErrors::BadRequestError.new(message: 'radius_km must be positive.') if parsed_radius <= 0
   rescue ArgumentError
     raise ApiErrors::BadRequestError.new(message: "Invalid format for radius_km: \"#{params[:radius_km]}\"")
+  end
+
+  def check_address
+    raise ApiErrors::BadRequestError.new(message: 'address missing, please provide an address query parameter.') if params[:address].blank?
   end
 end
