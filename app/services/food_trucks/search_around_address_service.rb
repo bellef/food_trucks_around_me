@@ -6,7 +6,7 @@ module FoodTrucks
 
     def initialize(address, radius_km = nil)
       @address = address
-      @radius_km = radius_km || DEFAULT_RADIUS_KM
+      @radius_km = radius_km.blank? ? DEFAULT_RADIUS_KM : radius_km
     end
 
     def process

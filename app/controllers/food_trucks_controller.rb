@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FoodTrucksController < ApplicationController
-  before_action :check_params
+  before_action :check_radius_km
 
   def search
     search_service = FoodTrucks::SearchAroundAddressService.new(
@@ -14,9 +14,10 @@ class FoodTrucksController < ApplicationController
 
   private
 
-  def check_params
+  def check_radius_km
+    return if params[:radius_km].blank?
     parsed_radius = Float(params[:radius_km])
-    raise ApiErrors::BadRequestError.new(message: 'Radius cannot be negative, please provide a positive radius.') if parsed_radius.negative?
+    raise ApiErrors::BadRequestError.new(message: 'radius_km must be positive.') if parsed_radius <= 0
   rescue ArgumentError
     raise ApiErrors::BadRequestError.new(message: "Invalid format for radius_km: \"#{params[:radius_km]}\"")
   end
