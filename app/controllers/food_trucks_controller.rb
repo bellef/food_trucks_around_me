@@ -10,7 +10,7 @@ class FoodTrucksController < ApplicationController
       params[:radius_km]
     )
     food_trucks = search_service.process
-    render json: food_trucks, each_serializer: FoodTruckSerializer
+    render json: { data: food_trucks }, each_serializer: FoodTruckSerializer
   end
 
   private
