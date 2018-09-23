@@ -19,7 +19,7 @@ module FoodTrucks
         headers: headers
       )
       return response if response.success?
-      raise CustomErrors::Api::ThirdPartyApiError.new(message: 'An error occured with the DataSf API, please contact the service administrator or see the logs if you are the administrator.', code: 500, data: response.body)
+      raise CustomErrors::Api::ThirdPartyApiError.new(message: 'An error occured with the DataSf API, please contact the service administrator or see the logs if you are the administrator.', code: 500, data: response)
     end
 
     private

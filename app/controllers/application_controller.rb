@@ -14,7 +14,6 @@ class ApplicationController < ActionController::API
 
   def third_party_api_error(error)
     render_api_error(error)
-    # TODO
-    puts "ROLLBAR HERE" if error.code == 500
+    Rollbar.error(error.message, error.data.instance_values.merge(code: error.data.code)) if error.code == 500
   end
 end
