@@ -3,6 +3,7 @@
 module FoodTrucks
   class DataSfAdapter
     include HTTParty
+    debug_output Rails.logger
     default_params headers: headers
 
     base_uri ENV['DATA_SF_BASE_URI']
