@@ -13,11 +13,13 @@ module FoodTrucks
     def food_trucks_within(bounding_box)
       @bounding_box = bounding_box
 
-      self.class.get(
+      response = self.class.get(
         ENV['DATA_SF_BASE_PATH'],
         query: query,
         headers: headers
       )
+      return response if response.success?
+      raise CustomErrors::Api::ThirdPartyApiError.new(message: 'An error occured with the DataSf API, please contact the service administrator or see the logs if you are the administrator.', code: 500, data: response.body)
     end
 
     private

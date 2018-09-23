@@ -11,7 +11,6 @@ module FoodTrucks
 
     def process
       raw_items = food_trucks_client.food_trucks_within(bounding_box)
-      # TODO: Handle non 200 responses
       Deserializers::DataSfDeserializer.deserialize_collection(raw_items)
     end
 
