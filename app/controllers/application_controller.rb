@@ -3,8 +3,7 @@
 class ApplicationController < ActionController::API
   rescue_from CustomErrors::Api::BaseError, with: :render_api_error
   rescue_from CustomErrors::Api::ThirdPartyApiError, with: :third_party_api_error
-  # TODO: Rescue everything to render a custom 500 and send a rollbar
-  # Please contact the system administrator of the service
+  rescue_from StandardError, with: :handle_server_error
 
   private
 
@@ -15,5 +14,10 @@ class ApplicationController < ActionController::API
   def third_party_api_error(error)
     render_api_error(error)
     Rollbar.error(error.message, error.data.instance_values.merge(code: error.data.code)) if error.code == 500
+  end
+
+  def handle_server_error(error)
+    render json: { errors: 'An internal server error occured, please contact the service administrator or see the logs if you are the administrator.' }, status: 500
+    Rollbar.error(error)
   end
 end
