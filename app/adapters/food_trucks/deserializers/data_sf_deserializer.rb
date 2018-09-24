@@ -5,7 +5,7 @@ module FoodTrucks
     class DataSfDeserializer
       # Takes raw data from DataSf and returns a FoodTruck object
       def self.deserialize(raw_item)
-        FoodTruck.new(
+        food_truck = FoodTruck.new(
           address:              raw_item['Address'],
           name:                 raw_item['Applicant'],
           location_description: raw_item['LocationDescription'],
@@ -15,6 +15,8 @@ module FoodTrucks
           schedule:             raw_item['DaysHours'],
           schedule_url:         raw_item['Schedule']
         )
+        food_truck.validate!
+        food_truck
       end
 
       def self.deserialize_collection(raw_items)
