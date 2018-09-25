@@ -96,4 +96,10 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.before(:each) do
+    raw_response_file = File.new(Rails.root.join('spec/mocks/data_sf/get_success_body.json'))
+
+    stub_request(:get, /#{ENV['DATA_SF_BASE_URI']}/)
+      .to_return(status: 200, body: raw_response_file)
+  end
 end
