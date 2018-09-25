@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  rescue_from StandardError, with: :handle_server_error
   rescue_from CustomErrors::Api::BaseError, with: :render_api_error
   rescue_from CustomErrors::Api::ThirdPartyApiError, with: :third_party_api_error
-  rescue_from StandardError, with: :handle_server_error
 
   private
 

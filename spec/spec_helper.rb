@@ -101,5 +101,7 @@ RSpec.configure do |config|
 
     stub_request(:get, /#{ENV['DATA_SF_BASE_URI']}/)
       .to_return(status: 200, body: raw_response_file)
+
+    allow_any_instance_of(FoodTrucks::SearchAroundAddressService).to receive(:bounding_box) { [12.3, -30.4, 13.2, -31.2] }
   end
 end
