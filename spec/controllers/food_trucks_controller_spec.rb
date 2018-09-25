@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe FoodTrucksController, type: :controller do
@@ -14,6 +16,7 @@ RSpec.describe FoodTrucksController, type: :controller do
   it 'has a 200 status code' do
     get :search, params: { address: address, radius_km: radius_km }
     expect(response.status).to eq(200)
+    expect(response).to match_response_schema('food_trucks')
   end
 
   context 'when the address is missing' do

@@ -1,0 +1,66 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "name",
+      "address",
+      "location_description",
+      "latitude",
+      "longitude",
+      "food_items",
+      "schedule",
+      "schedule_url"
+    ],
+    "properties": {
+      "name": {
+        "type": "string",
+        "examples": [
+          "Julie's Hot Dogs"
+        ]
+      },
+      "address": {
+        "type": "string",
+        "examples": [
+          "2386 MISSION ST"
+        ]
+      },
+      "location_description": {
+        "type": "string",
+        "examples": [
+          "MISSION ST: 19TH ST to 20TH ST (2300 - 2399)"
+        ]
+      },
+      "latitude": {
+        "type": "number",
+        "examples": [
+          37.7588799920148
+        ]
+      },
+      "longitude": {
+        "type": "number",
+        "examples": [
+          -122.419379202984
+        ]
+      },
+      "food_items": {
+        "type": "string",
+        "examples": [
+          "Hot dogs: bacon-wrapped hot dogs: chicken burgers: energy drinks: water and various other drinks."
+        ]
+      },
+      "schedule": {
+        "type": "string",
+        "examples": [
+          "Tu/We/Th:12AM-3AM;Mo-We:12PM-12AM"
+        ]
+      },
+      "schedule_url": {
+        "type": "string",
+        "examples": [
+          "http://bsm.sfdpw.org/PermitsTracker/reports/report.aspx?title=schedule&report=rptSchedule&params=permit=15MFF-0007&ExportPDF=1&Filename=15MFF-0007_schedule.pdf"
+        ]
+      }
+    }
+  }
+}
