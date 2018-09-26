@@ -1,0 +1,503 @@
+{
+	"info": {
+		"_postman_id": "8ce877a1-37a3-44af-84c1-f14771094ca4",
+		"name": "FoodTrucksAroundMe",
+		"description": "FoodTrucksAroundMe is a service providing a RESTful API to discover the food trucks around you.\n\nYou can find its documentation here: https://documenter.getpostman.com/view/498967/RWaRMQLk\n\nThe service is located at http://foodtrucksaroundme.herokuapp.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"description": null,
+			"item": [
+				{
+					"name": "Basic search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{base_url}}?address=2301 MISSION ST, San Francisco&radius_km=0.15",
+							"host": [
+								"{{base_url}}"
+							],
+							"query": [
+								{
+									"key": "address",
+									"value": "2301 MISSION ST, San Francisco"
+								},
+								{
+									"key": "radius_km",
+									"value": "0.15"
+								}
+							]
+						},
+						"description": "Renders the food trucks in a given radius around a specific address."
+					},
+					"response": [
+						{
+							"id": "ebc3f778-1ae1-45de-acb5-7b4b8f700505",
+							"name": "200 Address not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{base_url}}?address=Somewhere over the rainbow&radius_km=0.15",
+									"host": [
+										"{{base_url}}"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "Somewhere over the rainbow"
+										},
+										{
+											"key": "radius_km",
+											"value": "0.15"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Sep 2018 00:40:56 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4f53cda18c2baa0c0354bb5f9a3ecbe5\"",
+									"name": "Etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Server",
+									"value": "Cowboy",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur",
+									"name": "Via",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "d5a62f6a-0eec-4414-8d2d-da45f43f6981",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.353248",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						},
+						{
+							"id": "ee54a42c-215c-4c78-a143-88341984f17d",
+							"name": "400 Invalid radius_km format",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{base_url}}?address=2301 MISSION ST, San Francisco&radius_km=abc",
+									"host": [
+										"{{base_url}}"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "2301 MISSION ST, San Francisco"
+										},
+										{
+											"key": "radius_km",
+											"value": "abc"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Sep 2018 00:37:40 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Cowboy",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur",
+									"name": "Via",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "6262c74e-c142-463e-bd3a-29eb9690f908",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.007090",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":\"Invalid format for radius_km: \\\"abc\\\"\"}"
+						},
+						{
+							"id": "2042cfb9-f937-4697-84c8-e4a0faa4678b",
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{base_url}}?address=2301 MISSION ST, San Francisco&radius_km=0.1",
+									"host": [
+										"{{base_url}}"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "2301 MISSION ST, San Francisco"
+										},
+										{
+											"key": "radius_km",
+											"value": "0.1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "max-age=0, private, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Sep 2018 00:36:28 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4f4adcaf5436c8982be04e230bc8cbc5\"",
+									"name": "Etag",
+									"description": "An identifier for a specific version of a resource, often a message digest"
+								},
+								{
+									"key": "Server",
+									"value": "Cowboy",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur",
+									"name": "Via",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "1189f798-52a1-460f-b3cd-c6bca854fb4b",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.401339",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"name\":\"Leo's Hot Dogs\",\"address\":\"2301 MISSION ST\",\"location_description\":\"MISSION ST: 19TH ST to 20TH ST (2300 - 2399)\",\"latitude\":37.760086931987,\"longitude\":-122.418806481101,\"food_items\":\"Hot dogs and related toppings: non alcoholic beverages\",\"schedule\":\"Mo-Su:6PM-12AM\",\"schedule_url\":\"http://bsm.sfdpw.org/PermitsTracker/reports/report.aspx?title=schedule\\u0026report=rptSchedule\\u0026params=permit=18MFF-0001\\u0026ExportPDF=1\\u0026Filename=18MFF-0001_schedule.pdf\"},{\"name\":\"Julie's Hot Dogs\",\"address\":\"2365 MISSION ST\",\"location_description\":\"MISSION ST: 19TH ST to 20TH ST (2300 - 2399)\",\"latitude\":37.7592402851502,\"longitude\":-122.418544171117,\"food_items\":\"Hot dogs: Bacon wrapped hot dogs: soda: water: sports drinks: energy drinks: chips\",\"schedule\":\"Su/Fr/Sa:12AM-3AM;Th/Fr/Sa:10PM-12AM\",\"schedule_url\":\"http://bsm.sfdpw.org/PermitsTracker/reports/report.aspx?title=schedule\\u0026report=rptSchedule\\u0026params=permit=17MFF-0190\\u0026ExportPDF=1\\u0026Filename=17MFF-0190_schedule.pdf\"}]"
+						},
+						{
+							"id": "2f46ae00-6964-4805-a104-7ee8abe88b49",
+							"name": "400 Negative radius_km",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{base_url}}?address=2301 MISSION ST, San Francisco&radius_km=-0.1",
+									"host": [
+										"{{base_url}}"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "2301 MISSION ST, San Francisco"
+										},
+										{
+											"key": "radius_km",
+											"value": "-0.1"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Sep 2018 00:39:20 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Cowboy",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur",
+									"name": "Via",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "0459bb58-5c30-4c38-886c-759e01a57af9",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.002677",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":\"radius_km must be positive.\"}"
+						},
+						{
+							"id": "49a07d85-b504-472b-b848-d4a499095dc5",
+							"name": "400 Address missing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{base_url}}?radius_km=0.15",
+									"host": [
+										"{{base_url}}"
+									],
+									"query": [
+										{
+											"key": "radius_km",
+											"value": "0.15"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 26 Sep 2018 00:40:01 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Cowboy",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur",
+									"name": "Via",
+									"description": "Informs the client of proxies through which the response was sent."
+								},
+								{
+									"key": "X-Request-Id",
+									"value": "7c7f6689-3b16-47e5-94dc-730332a68dfd",
+									"name": "X-Request-Id",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Runtime",
+									"value": "0.001942",
+									"name": "X-Runtime",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":\"address missing, please provide an address query parameter.\"}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0ed3b386-8327-417d-baf0-823ce7d9a868",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "cd7b8e7a-1a0d-464a-ada2-669bf57d7e88",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

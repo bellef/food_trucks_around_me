@@ -1,7 +1,10 @@
 # FoodTrucksAroundMe
 
 FoodTrucksAroundMe provides a service to find food trucks near a specific location.
+
 Its documentation can be found [here](https://documenter.getpostman.com/view/498967/RWaRMQLk).
+
+The postman collection is available at the root of the app.
 
 ## General information
 
