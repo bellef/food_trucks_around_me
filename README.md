@@ -49,6 +49,7 @@ DATA_SF_BASE_PATH:        /resource/6a9r-agq8.json
 DATA_SF_BASE_URI:         https://data.sfgov.org
 MAPBOX_API_KEY:           <your_mapbox_api_key>
 ROLLBAR_ACCESS_TOKEN:     <your_rollbar_access_token>
+CORS_ORIGIN:              <the_origin_allowed_to_hit_the_api>
 ```
 
 ## Next steps
