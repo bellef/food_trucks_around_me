@@ -1,6 +1,7 @@
+
 # FoodTrucksAroundMe
 
-FoodTrucksAroundMe provides a service to find food trucks near a specific location.
+[FoodTrucksAroundMe](https://bellef.github.io/ftam/index.html) provides a service to find food trucks near a specific location.
 
 Its documentation can be found [here](https://documenter.getpostman.com/view/498967/RWaRMQLk).
 
@@ -8,19 +9,23 @@ The postman collection is available at the root of the app.
 
 ## General information
 
-- It's a `rails 5.2.1` app (api only mode)
+- Back end
+  -
+  - It's a `rails 5.2.1` app (api only mode)
+  - Hosted on [heroku](https://www.heroku.com/)
+  -  Errors are monitored on Rollbar
+  - Tested using `rspec`
+  - It relies on [mapbox](https://www.mapbox.com/geocoding/) to geocode the address passed by the client (through the `geocoder` gem)
+  - It's a good living example of using the [adapter](https://en.wikipedia.org/wiki/Adapter_pattern) design pattern
+  - It does not rely on a database (but uses ActiveModel)
 
-- Hosted on [heroku](https://www.heroku.com/)
+- Front end (app [here](https://bellef.github.io/ftam/index.html))
+  -
+  - Plain HTML/CSS/javascript application
+  - Relies on OpenStreetMap
+  - Has bootstrap for the design
+  - Handles errors
 
-- Errors are monitored on Rollbar
-
-- Tested using `rspec`
-
-- It relies on [mapbox](https://www.mapbox.com/geocoding/) to geocode the address passed by the client (through the `geocoder` gem)
-
-- It's a good living example of using the [adapter](https://en.wikipedia.org/wiki/Adapter_pattern) design pattern
-
-- It does not rely on a database (but uses ActiveModel)
 
 ## Implementation details
 
@@ -58,13 +63,16 @@ CORS_ORIGIN:              <the_origin_allowed_to_hit_the_api>
 - [ ] Caching of geocoded data (better scalability)
 - [ ] Advanced search by food type, opening hours, etc.
 - [ ] Add data sources for other locations (not only SF)
+- [ ] Asynchronous requests to the providers
 
 ## Missing parts
 - Front end app
-
-As the [subject](https://gist.github.com/AlexisMontagne/8b2a2d8794da3979d4b8285f165b1f76) of the challenge stated:
-> The goal of this code sample is to help us identify what you consider production-ready code. You should consider this code ready for final review with your colleague, i.e. this would be the last step before deploying to production.
-
-My skills in front end frameworks are not good enough to send code into production without spending a lot of time on it so I decided not to do it rather than to do it badly.
-
-If I were to do it, I would use some lightweight framework like Vue.js or something similar.
+  -
+  - [ ] **Error logging**
+  - [ ] **Unit testing**
+  - [ ] Autocomplete on address input
+  - [ ] Locate from device location
+  - [ ] Add marker for the user's location
+  - [ ] Get directions from location
+  - [ ] Advanced filters (food type, opening hours, etc.)
+  - [ ] Better design
