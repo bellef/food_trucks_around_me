@@ -10,7 +10,11 @@ module FoodTrucks
     end
 
     def process
-      raw_items = food_trucks_client.food_trucks_within(bounding_box)
+      raw_items = if search_address_coordinates.nil?
+                    []
+                  else
+                    food_trucks_client.food_trucks_within(bounding_box)
+                  end
       Deserializers::DataSfDeserializer.deserialize_collection(raw_items)
     end
 
@@ -22,15 +26,15 @@ module FoodTrucks
       FoodTrucks::DataSfAdapter.new
     end
 
+    def search_address_coordinates
+      @search_address_coordinates ||= Geocoder.search(address).first&.coordinates
+    end
+
     def bounding_box
       Geocoder::Calculations.bounding_box(
         search_address_coordinates,
         radius_km
       )
-    end
-
-    def search_address_coordinates
-      Geocoder.search(address).first.coordinates
     end
   end
 end
